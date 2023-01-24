@@ -1,0 +1,58 @@
+{% extends "master.html" %}
+{% block content %}
+
+
+   <div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+
+                  <div class="col-md-8">
+                    <h4>List Rumah Sakit Rujukukan Seluruh Indonesia</h4>
+                  </div>
+
+                   <div class="col-md-4">
+                    <form class="form-inline float-right" method="POST" action="">
+                        <div class="form-group mb-2 mx-sm-3">
+                          <select name="filter" id="filter" class="form-control">
+                            <option disabled selected>Urutkan Berdasarkan</option>
+                            <option value="name"> Nama Rumah Sakit </option>
+                            <option value="province"> Provinsi </option>
+                            <option value="region"> Kota </option>
+                          </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Urutkan</button>
+                      </form>
+                   </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered text-center" style="text-transform: capitalize;">
+                    <thead>
+                        <tr>
+                            <th>Nama Rumah Sakit</th>
+                            <th>Alamat</th>
+                            <th>No Telp</th>
+                            <th>Provinsi</th>
+                            <th>Kota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data %}
+                            <tr>
+                                <td>{{row.name}}</td>
+                                <td>{{row.address}}</td>
+                                <td>{{row.phone}}</td>
+                                <td>{{row.province}}</td>
+                                <td>{{row.region}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   </div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "master.html" %}
+{% block content %}
+
+   <div class="row justify-content-center">
+     <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">{{data.name}}</h3>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Jumlah Terjangkit : {{ '{:,.0f}'.format(data.numbers.infected) }}</li>
+                <li class="list-group-item">Jumlah Sembuh     : {{ '{:,.0f}'.format(data.numbers.recovered) }}</li>
+                <li class="list-group-item">Jumlah Meninggal  : {{ '{:,.0f}'.format(data.numbers.fatal) }}</li>
+              </ul>
+
+            </div>
+          </div>
+     </div>
+   </div>
+
+   <div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3>List Data Covid</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>Provinsi</th>
+                            <th>Jumlah Terjangkit</th>
+                            <th>Jumlah Sembuh</th>
+                            <th>Jumlah Meninggal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data.regions %}
+                            <tr>
+                                <td><a href="{{url_for('detail_hospital', province=row.name)}}">{{row.name}}</a></td>
+                                <td>{{ '{:,.0f}'.format(row.numbers.infected) }}</td>
+                                <td>{{ '{:,.0f}'.format(row.numbers.recovered) }}</td>
+                                <td>{{ '{:,.0f}'.format(row.numbers.fatal) }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   </div>
+
+{% endblock %}

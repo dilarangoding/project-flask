@@ -1,0 +1,51 @@
+{% extends "master.html" %}
+{% block content %}
+
+
+ <div class="row justify-content-center mt-5">
+        {% for k in list_kota %}
+        <div class="col-md-4 mt-1">
+            <div class="card">
+                <div class="card-body">
+                    <h6>{{k}}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor%}
+ </div>
+
+   <div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>List Rumah Sakit Rujukan di {{ province }}</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered text-center" style="text-transform: capitalize;">
+                    <thead>
+                        <tr>
+                            <th>Nama Rumah Sakit</th>
+                            <th>Alamat</th>
+                            <th>No Telp</th>
+                            <th>Provinsi</th>
+                            <th>Kota</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {% for row in data %}
+                            <tr>
+                                <td>{{row.name}}</td>
+                                <td>{{row.address}}</td>
+                                <td>{{row.phone}}</td>
+                                <td>{{row.province}}</td>
+                                <td>{{row.region}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   </div>
+
+{% endblock %}

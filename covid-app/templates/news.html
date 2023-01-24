@@ -1,0 +1,19 @@
+{% extends "master.html" %}
+{% block content %}
+
+    <div class="row justify-content-center">
+        {% for row in data %}
+            <div class="col-md-3 m-1">
+                <div class="card" >
+                    <div class="card-body">
+                      <h6 class="card-title">{{ row.title }}</h6>
+
+                      <a href="{{row.url}}" target="_blank" class="card-link">Link to Website</a>
+                      <a href="#" class="card-link text-muted"></a>
+                    </div>
+                  </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
